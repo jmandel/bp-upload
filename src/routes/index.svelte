@@ -5,14 +5,12 @@
   
   let screen = 'one'; // can be 'one', 'two', or 'three'
   let shared = writable(false);
-  $: console.log("Screne", screen)
 </script>
 
 <style>
   /* General styling for the main container and page */
   .app-container {
     max-width: 800px;
-    margin: 0 auto;
   }
 </style>
 
@@ -22,6 +20,6 @@
   {:else if screen === 'two'}
     <Share bind:screen={screen} />
   {:else}
-    <Home shared={shared} bind:screen={screen} />
+    <Home shared={$shared} bind:screen={screen} />
   {/if}
 </div>

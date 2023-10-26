@@ -4,6 +4,8 @@
   export let shared = false;
 
   let editingIndices = [];  // Tracks which rows are in "editing" mode
+  let newBpBox = [];
+  addBP()
 
   function shareData() {
     console.log("Sharing")
@@ -19,9 +21,11 @@
       isEditing: true  // Indicates if this BP is in editing mode
     };
     bpStore.update(bps => {
-      bps.push(bp);
+      bps.unshift(bp);
       return bps;
     });
+    setTimeout(() => { newBpBox?.[0]?.focus();
+    })
   }
 
   function saveBP(index) {
@@ -30,6 +34,9 @@
       bp.isEditing = false;  // Toggle off editing mode after saving
       return bps;
     });
+    if (index === 0) {
+      addBP()
+    }
   }
 
   function deleteBP(index) {
@@ -37,6 +44,9 @@
       bps.splice(index, 1);
       return bps;
     });
+    if (index === 0) {
+      addBP()
+    }
   }
 
   function toggleEdit(index) {
@@ -67,25 +77,19 @@
     </thead>
 
 <tbody>
-  <tr>
-    <td colspan="5">
-      <button style="width: 100%" on:click={addBP}>Add New BP</button>
-    </td>
-    {#if shared}
-      <td></td>
-    {/if}
-  </tr>
   <!-- Display BPs from the store -->
   {#each $bpStore as bp, index}
     {#if bp.isEditing}
       <tr>
-        <td><input bind:value={bp.systolic} type="number" placeholder="Systolic"></td>
+        <td><input bind:this={newBpBox[index]} bind:value={bp.systolic} max="300" size="5" type="number" placeholder="Systolic"></td>
         <td><input bind:value={bp.diastolic} type="number" placeholder="Diastolic"></td>
         <td><input bind:value={bp.date} type="datetime-local"></td>
         <td><input bind:value={bp.note} type="text" placeholder="Note"></td>
         <td>
           <button on:click={() => saveBP(index)}>Save</button>
+          {#if (index > 0)}
           <button on:click={() => deleteBP(index)}>Delete</button>
+          {/if}
         </td>
         {#if shared}
           <td></td>
@@ -115,14 +119,13 @@
 
 <style>
   /* Styling for ScreenOne component */
-  .table-container {
-    margin-top: 2rem;
-    border: 1px solid #ccc;
-  }
-  
   table {
     width: 100%;
     border-collapse: collapse;
+  }
+
+  input[type="number"] {
+    width: 3em;
   }
   
   th, td {
