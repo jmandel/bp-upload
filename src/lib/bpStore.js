@@ -1,5 +1,12 @@
-import { writable } from 'svelte/store';
+import { browser } from "$app/environment";
+import { writable } from "svelte/store";
 
-const initialData = [];
-
-export const bpStore = writable(initialData);
+export const bpStore = writable([]);
+if (browser) {
+  const savedBps = JSON.parse(localStorage.getItem(`bpStore`) || `[]`);
+  bpStore.set(savedBps);
+  bpStore.subscribe((bps) => {
+    if (!bps) return;
+    localStorage.setItem(`bpStore`, JSON.stringify(bps.filter(bp=> bp.saved)));
+  });
+}
