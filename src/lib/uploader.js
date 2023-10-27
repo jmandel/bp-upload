@@ -116,6 +116,11 @@ const makeObservation = ({patientId, systolic, diastolic, dateTime}) => ({
 export const handleVitalSignsSubmission = async (client, newVitalSignInputs, status) => {
   console.log("HAndlng")
     const newVitalSigns = newVitalSignInputs.filter(v => !!v.date).map(vs => makeObservation({patientId: client.patient.id, ...vs}));
+    if (newVitalSigns.length === 0) {
+      status.set("No BPs Found")
+      return;
+    }
+
     status.set("Converted")
     const dateRange = calculateDateRange(newVitalSigns);
     status.set("Fetching existing vitals")

@@ -1,14 +1,14 @@
 <script>
   import { goto } from "$app/navigation";
+  import { base } from "$app/paths";
   import { bpStore } from "$lib/bpStore.js";
-  export let shared = false;
 
   let newBpBox = [];
   addBP();
 
+  console.log("BASE", base)
   function shareData() {
-    console.log("Sharing");
-    goto("/share");
+    goto(`${base}/share`);
   }
 
   function addBP() {
@@ -63,7 +63,7 @@
   }
 </script>
 
-<h2>{shared ? "Thank you for sharing your data" : "Welcome"}</h2>
+<h2>Enter Your Blood Pressure Readings</h2>
 
 <table>
   <thead>
@@ -73,9 +73,6 @@
       <th>Date/Time</th>
       <th>Note</th>
       <th>Actions</th>
-      {#if shared}
-        <th>Shared</th>
-      {/if}
     </tr>
   </thead>
 
@@ -114,9 +111,6 @@
               <button on:click={() => deleteBP(index)}>Delete</button>
             {/if}
           </td>
-          {#if shared}
-            <td />
-          {/if}
         </tr>
       {:else}
         <tr class:submitted={bp.submitted}>
@@ -128,9 +122,6 @@
             <button on:click={() => toggleEdit(index)}>Edit</button>
             <button on:click={() => deleteBP(index)}>Delete</button>
           </td>
-          {#if shared}
-            <td><input type="checkbox" checked /></td>
-          {/if}
         </tr>
       {/if}
     {/each}
