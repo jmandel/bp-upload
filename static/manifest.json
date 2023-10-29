@@ -1,11 +1,11 @@
 {
   "$schema":"https://json.schemastore.org/web-manifest-combined.json",
-  "name":"Simple Offline Web App",
-  "short_name":"Off App",
+  "name":"BP Upload",
+  "short_name":"BP Up",
   "start_url":"./",
-  "id":"ASimpleApp",
+  "id":"BPUpApp",
   "scope":".",
   "display":"standalone",
-  "description":"An offline PWA using browser caches (no service worker caches required)",
-  "icons":[{"src":"logo2.png","sizes":"1024x1024","purpose":"any"}]
+  "description":"Share your blood pressure readings with a healthcare provider",
+  "icons":[{"src":"logo.png","sizes":"1024x1024","purpose":"any"}]
 }
