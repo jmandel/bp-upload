@@ -17,7 +17,6 @@
       diastolic: "",
       date: "",
       time: "",
-      note: "",
       isEditing: true,
       saved: false,
       uploaded: false,
@@ -63,7 +62,7 @@
   }
 </script>
 
-<h2>Enter Your Blood Pressure Readings</h2>
+<h2>Blood Pressure Readings</h2>
 
 <table>
   <thead>
@@ -71,7 +70,6 @@
       <th>Systolic</th>
       <th>Diastolic</th>
       <th>Date/Time</th>
-      <th>Note</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -104,7 +102,6 @@
               type="time"
             /></td
           >
-          <td><input bind:value={bp.note} type="text" placeholder="Note" /></td>
           <td>
             <button on:click={() => saveBP(index)}>Save</button>
             {#if index > 0}
@@ -117,7 +114,6 @@
           <td>{bp.systolic}</td>
           <td>{bp.diastolic}</td>
           <td>{bp.date}T{bp.time}</td>
-          <td>{bp.note}</td>
           <td>
             <button on:click={() => toggleEdit(index)}>Edit</button>
             <button on:click={() => deleteBP(index)}>Delete</button>

@@ -7,5 +7,5 @@
   "scope":".",
   "display":"standalone",
   "description":"An offline PWA using browser caches (no service worker caches required)",
-  "icons":[{"src":"logo192.png","sizes":"192x192","purpose":"any"}]
+  "icons":[{"src":"logo2.png","sizes":"1024x1024","purpose":"any"}]
 }

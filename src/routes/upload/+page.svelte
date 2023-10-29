@@ -5,7 +5,12 @@
   import { handleVitalSignsSubmission } from "$lib/uploader";
   import { writable } from "svelte/store";
 
-  let status = writable("Initializing...");
+  let statusLog = []
+  let status = writable("Initializing");
+  status.subscribe(s => {
+    statusLog.push($status);
+    statusLog = statusLog;
+  })
 
   $: submitTo($smart);
 
@@ -22,7 +27,15 @@
 <h2>Uploading BPs: {$bpStore.length}</h2>
 
 <div>
-  Status: <em>{$status}</em>
+  <ol>
+    {#each statusLog as status, i}
+    <li>{status}</li>
+    {/each}
+
+    {#if statusLog.at(-1) !== "Done"}
+    <li>...</li>
+    {/if}
+  </ol>
 </div>
 
 <a href="{base}/">Back to grid</a>

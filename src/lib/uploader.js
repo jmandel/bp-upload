@@ -120,12 +120,14 @@ export const handleVitalSignsSubmission = async (client, newVitalSignInputs, sta
       status.set("No BPs Found")
       return;
     }
-
     status.set("Converted")
     const dateRange = calculateDateRange(newVitalSigns);
     status.set("Fetching existing vitals")
     const existingVitalSigns = await client.patient.request(`Observation?code=85354-9&date=ge${dateRange.start}&date=le${dateRange.end}`);
     const vitalSignsToSubmit = filterRedundantRecords(newVitalSigns, existingVitalSigns?.entry?.map(e => e.resource) ?? []);
+    if (vitalSignsToSubmit.length ===  0) {
+      status.set("All BPs already exist on server")
+    }
     let i = 0;
     for (const vs of vitalSignsToSubmit) {
       status.set("Uploading " + ++i)
