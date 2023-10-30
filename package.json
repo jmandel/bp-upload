@@ -20,6 +20,7 @@
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
-		"fhirclient": "^2.5.2"
+		"fhirclient": "^2.5.2",
+		"papaparse": "^5.4.1"
 	}
 }

@@ -1,11 +1,24 @@
 {
-  "$schema":"https://json.schemastore.org/web-manifest-combined.json",
-  "name":"BP Upload",
-  "short_name":"BP Up",
-  "start_url":"./",
-  "id":"BPUpApp",
-  "scope":".",
-  "display":"standalone",
-  "description":"Share your blood pressure readings with a healthcare provider",
-  "icons":[{"src":"logo.png","sizes":"1024x1024","purpose":"any"}]
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "BP Upload",
+  "short_name": "BP Up",
+  "start_url": "./",
+  "id": "BPUpApp",
+  "scope": ".",
+  "display": "standalone",
+  "description": "Share your blood pressure readings with a healthcare provider",
+  "icons": [{ "src": "./logo.png", "sizes": "1024x1024", "purpose": "any" }],
+  "share_target": {
+    "action": "./share-csv",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "vitals",
+          "accept": ["text/csv", ".csv"]
+        }
+      ]
+    }
+  }
 }
