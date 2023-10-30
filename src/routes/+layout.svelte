@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import "../app.css";
 </script>
 
@@ -8,7 +9,7 @@
 <br />
 <footer>
   <!-- svelte-ignore a11y-missing-attribute -->
-  <img src="./logo2.png" />
+  <img src="{base}/logo2.png" />
   SMART on FHIR, {new Date().toISOString().slice(0, 4)}
 </footer>
 
