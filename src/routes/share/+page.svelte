@@ -22,7 +22,7 @@
       iss:
         "https://launch.smarthealthit.org/v/r4/sim/WzMsIiIsIiIsIkFVVE8iLDEsMCwwLCIiLCIiLCIiLCIiLCIiLCIiLCIiLDAsMV0/fhir",
       clientId: "whatever",
-      scope: "launch/patient offline_access openid fhirUser",
+      scope: "launch/patient offline_access patient/Patient.read patient/Observation.read patient/Observation.write",
     });
   }
 
