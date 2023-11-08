@@ -21,7 +21,7 @@ let defaultTiles = [
     name: "FHIR Candle",
     fhirConnection: {
       redirectUri: "upload",
-      iss: "https://launch.smarthealthit.org/v/r4/sim/WzMsIiIsIiIsIkFVVE8iLDEsMCwwLCIiLCIiLCIiLCIiLCIiLCIiLCIiLDAsMV0/fhir",
+      iss: "https://vitals-server.ri.argo.run/fhir/smart",
       clientId: "whatever",
       scope:
         "launch/patient offline_access patient/Patient.read patient/Observation.read patient/Observation.write",
@@ -29,10 +29,10 @@ let defaultTiles = [
   },
   {
     logo: "clinic-3.png",
-    name: "Associated Physicians",
+    name: "Edit Me!",
     fhirConnection: {
       redirectUri: "upload",
-      iss: "https://launch.smarthealthit.org/v/r4/sim/WzMsIiIsIiIsIkFVVE8iLDEsMCwwLCIiLCIiLCIiLCIiLCIiLCIiLCIiLDAsMV0/fhir",
+      iss: "https://your-server.example.org/fhir",
       clientId: "whatever",
       scope:
         "launch/patient offline_access patient/Patient.read patient/Observation.read patient/Observation.write",
@@ -40,10 +40,10 @@ let defaultTiles = [
   },
   {
     logo: "clinic-4.png",
-    name: "General Hospital",
+    name: "Your Server Here",
     fhirConnection: {
       redirectUri: "upload",
-      iss: "https://launch.smarthealthit.org/v/r4/sim/WzMsIiIsIiIsIkFVVE8iLDEsMCwwLCIiLCIiLCIiLCIiLCIiLCIiLCIiLDAsMV0/fhir",
+      iss: "https://your-server.example.org/fhir",
       clientId: "whatever",
       scope:
         "launch/patient offline_access patient/Patient.read patient/Observation.read patient/Observation.write",
